@@ -256,3 +256,34 @@ class LinkedIntegers: LinkedList<Int> {}
 let newList = LinkedIntegers()
 newList.append(1)
 
+
+struct Queue<Element> {
+    var array = [Element]()
+    var isEmpty: Bool {
+        if array.isEmpty {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    var count: Int {
+        return array.count
+    }
+    
+    mutating func enqueue(_ item: Element) {
+        self.array.append(item)
+    }
+    
+    mutating func dequeue() -> Element? {
+        if self.array.isEmpty == false {
+            return self.array.remove(at: 0)
+        } else {
+            return nil
+        }
+        
+    }
+}
+
+
+

@@ -42,3 +42,12 @@ swapValues(&g, &h)
 g
 h
 
+func clone<T>(item: T, numberOfTimes: Int) -> [T] {
+    var array: [T] = [T] ()
+    for _ in 1...numberOfTimes {
+        array.append(item)
+    }
+    return array
+}
+
+clone(item: "anna", numberOfTimes: 6)

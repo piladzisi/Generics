@@ -34,10 +34,34 @@ struct Checkout<Item: HashableShoppingItem> {
     var cart = [Item: Int]()
 }
 
-//MARK: where close 
+//MARK: where close
 class Shape {}
 
 struct Animator<T> where T: Hashable, T: Shape {
     
 }
 
+
+protocol Animal {
+    associatedtype Food
+    func eat(_ food: Food)
+}
+
+struct Kibble {}
+
+class Cat: Animal {
+    func eat(_ food: Kibble) {
+        // code
+    }
+}
+
+struct DogFood {}
+
+class Dog: Animal {
+    func eat(_ food: DogFood) {
+        //
+    }
+}
+
+let cat = Cat()
+let dog = Dog()

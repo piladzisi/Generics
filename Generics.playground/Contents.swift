@@ -77,3 +77,76 @@ func map<T, U>(array: [T], transformation: (T) -> U) -> [U] {
     }
     return newArray
 }
+
+func findKey<Key, Value: Equatable>(for value: Value, in dictionary: Dictionary<Key, Value>) -> Key? {
+    for (iterKey, iterValue) in dictionary {
+        if iterValue == value {
+            return iterKey
+        }
+    }
+    return nil
+}
+
+struct Item {
+    let price: Int
+    let quantity: Int
+}
+
+let airportCodes = ["CDG": "Charles de Gaulle", "HKG": "Hong Kong International Airport"]
+
+findKey(for:"Hong Kong International Airport", in: airportCodes)
+
+enum Snack {
+    case gum
+    case cookie
+}
+
+struct Product {
+    let price: Int
+    let quantity: Int
+}
+extension  Product: Equatable {
+    static func ==(lhs: Product, rhs: Product) -> Bool{
+        return lhs.price == rhs.price && lhs.quantity == rhs.quantity
+    }
+}
+
+let inventory: [Snack: Product] = [
+    .gum: Product(price: 1, quantity: 5),
+    .cookie: Product(price: 2, quantity: 3)
+]
+let someProduct = Product(price: 2, quantity: 3)
+
+findKey(for: someProduct, in: inventory)
+
+//class Constraints
+
+class Shape {}
+
+func center<T: Shape>(of shape: T) {
+    print("Called")
+}
+let testShape = Shape()
+center(of: testShape)
+
+class Square: Shape {}
+let testSquare = Square()
+center(of: testShape)
+
+//class View {}
+//let testView = View ()
+//center(of: testView)
+
+
+func largest<T: Comparable>(in array: [T]) -> T? {
+    var largest: T?
+    
+    if let largestNum = array.max() {
+        largest = largestNum
+    } else {
+        return nil
+    }
+    return largest
+}
+
+largest(in: [3,5,7,23])

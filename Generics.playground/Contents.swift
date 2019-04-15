@@ -51,3 +51,29 @@ func clone<T>(item: T, numberOfTimes: Int) -> [T] {
 }
 
 clone(item: "anna", numberOfTimes: 6)
+
+func transform<T, U>(arg: T, operation: (T) -> U) -> U {
+    return operation (arg)
+}
+
+func stringToInt(_ a: String) -> Int {
+    guard let value = Int(a) else { fatalError() }
+    return value
+}
+
+transform(arg: "1", operation: stringToInt)
+
+func intToString(_ a: Int) -> String {
+    return String(a)
+}
+
+transform(arg: 12, operation: intToString)
+
+func map<T, U>(array: [T], transformation: (T) -> U) -> [U] {
+    var newArray = [U]()
+    
+    for values in array {
+        newArray.append(transformation(values))
+    }
+    return newArray
+}

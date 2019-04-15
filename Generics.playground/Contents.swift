@@ -23,8 +23,6 @@ func swapString(_ a: inout String, _ b: inout String) {
     b = tempA
 }
 swapString(&g, &h)
-g
-h
 
 func swapAny(_ a: inout Any, _ b: inout Any) {
     let tempA = a
@@ -32,4 +30,15 @@ func swapAny(_ a: inout Any, _ b: inout Any) {
     b = tempA
 }
 
+//GENERIC FUNCTION
+func swapValues<T>(_ a: inout T, _ b: inout T){
+    let tempA = a
+    a = b
+    b = tempA
+}
+
+swapValues(&d, &e)
+swapValues(&g, &h)
+g
+h
 
